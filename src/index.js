@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-
+const {PORT} = require('./config/server.config');
 const app = express();
 
 app.use(bodyParser.json());
@@ -11,6 +11,6 @@ app.get('/ping', (req, res) => {
     return res.json({messge : 'Quora application is alive'});
 })
 
-app.listen(3000, async () => {
-    console.log(`server started at port 3000`)
+app.listen(PORT, async () => {
+    console.log(`server started at port ${PORT}`);
 })
