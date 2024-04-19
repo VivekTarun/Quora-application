@@ -18,10 +18,10 @@ class UserService {
         return user;
     }
 
-    async updateUser(userId) {
-        const user = await this.userRepository.updateUser(userId);
+    async updateUser(userId, updatedData) {
+        const user = await this.userRepository.updateUser(userId, updatedData);
         return user;
     }
 }
 
-module.exports = UserService;        
+module.exports = UserService;

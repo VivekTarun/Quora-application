@@ -23,18 +23,32 @@ async function addUser(req, res, next) {
     }
 }
 
-async function getUser(req, res) {
-    const user = await userService.getUser(req.params.id);
-    return res.status(StatusCodes.OK).json({
+async function getUser(req, res, next) {
+    try {
+        const user = await userService.getUser(req.params.id);
+        return res.status(StatusCodes.OK).json({
         success : true,
         error: {},
         message : 'Successfully fetched a problem',
         data : user
-    })
+        })
+    } catch(error) {
+        next(error);
+    }
 }
 
-function updateUser(req, res) {
-    throw new NotImplemented('update problem')
+async function updateUser(req, res, next) {
+    try {
+        const updatedUser = await userService.updateUser(req.params.id, req.body);
+        return res.status(StatusCodes.OK).json({
+            success : true,
+            message : 'Successfully updated the problem', 
+            error : {},
+            data : updatedUser
+        })
+    } catch(error) {
+        next(error);
+    }
 }
 
 module.exports = {
