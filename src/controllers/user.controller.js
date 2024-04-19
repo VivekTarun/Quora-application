@@ -23,8 +23,14 @@ async function addUser(req, res, next) {
     }
 }
 
-function getUser(req, res) {
-    throw new NotImplemented('get problem')
+async function getUser(req, res) {
+    const user = await userService.getUser(req.params.id);
+    return res.status(StatusCodes.OK).json({
+        success : true,
+        error: {},
+        message : 'Successfully fetched a problem',
+        data : user
+    })
 }
 
 function updateUser(req, res) {
