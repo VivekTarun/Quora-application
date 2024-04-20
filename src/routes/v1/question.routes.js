@@ -8,6 +8,6 @@ questionRouter.get('/ping', questionController.pingQuestionController);
 
 questionRouter.post('/', questionController.addQuestion);
 
-questionRouter.get('/', questionController.getQuestion);
+questionRouter.get('/search', questionController.getQuestion); // search using text and tags
 
 module.exports = questionRouter;
