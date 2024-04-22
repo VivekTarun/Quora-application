@@ -1,16 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const {PORT} = require('./config/server.config');
+const { PORT } = require('./config/server.config');
 const connectToDB = require('./config/db.config');
-const errorHandler = require('./utils/errorHandler');
+const { errorHandler } = require('./utils/index');
+const apiRouter = require('./routes');
+
 const app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
-app.use(bodyParser.urlencoded({extended : true}));
+
+app.use('/api', apiRouter);
 
 app.get('/ping', (req, res) => {
-    return res.json({messge : 'Quora application is alive'});
+    return res.json({ messge: 'Quora application is alive' });
 })
 
 app.use(errorHandler);
