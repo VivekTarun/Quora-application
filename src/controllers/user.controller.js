@@ -9,7 +9,7 @@ function pingUserController(req, res) {
     return res.json({message : "User controller is up"});
 }
 
-async function addUser(req, res, next) {
+async function createUser(req, res, next) {
     try {
         const newUser = await userService.createUser(req.body);
         return res.status(StatusCodes.CREATED).json({
@@ -27,10 +27,10 @@ async function getUser(req, res, next) {
     try {
         const user = await userService.getUser(req.params.id);
         return res.status(StatusCodes.OK).json({
-        success : true,
-        error: {},
-        message : 'Successfully fetched a problem',
-        data : user
+            success : true,
+            error: {},
+            message : 'Successfully fetched a problem',
+            data : user
         })
     } catch(error) {
         next(error);
@@ -53,7 +53,7 @@ async function updateUser(req, res, next) {
 
 module.exports = {
     pingUserController,
-    addUser,
+    createUser,
     getUser,
     updateUser
 }

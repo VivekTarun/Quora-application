@@ -6,7 +6,7 @@ const questionRouter = express.Router();
 
 questionRouter.get('/ping', questionController.pingQuestionController);
 
-questionRouter.post('/', questionController.addQuestion);
+questionRouter.post('/', questionController.createQuestion);
 
 questionRouter.get('/search', questionController.getQuestion); // search using text and tags
 

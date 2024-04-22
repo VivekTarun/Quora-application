@@ -1,9 +1,9 @@
 const {User} = require('../models/index');
 const NotFound = require('../errors/notfound.error');
-const DuplicateKey = require('../errors/duplicateKey.error');
+const DuplicateUser = require('../errors/duplicateUser.error');
 
 
-class userRepository {
+class UserRepository {
     async createUser(userData) {
         try {
             const user = await User.create({
@@ -14,10 +14,10 @@ class userRepository {
             return user;
         } catch(error) {
             if(error.keyPattern.username == 1) {
-                throw new DuplicateKey(userData.username, '');
+                throw new DuplicateUser(userData.username, '');
             }
             if(error.keyPattern.email == 1) {
-                throw new DuplicateKey('', userData.email)
+                throw new DuplicateUser('', userData.email)
             }
             console.log(error);
             throw error;
@@ -51,4 +51,4 @@ class userRepository {
     }
 }
 
-module.exports = userRepository;
+module.exports = UserRepository;
