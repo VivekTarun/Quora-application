@@ -3,5 +3,6 @@ module.exports = {
     questionController : require('./question.controller'),
     answerController : require('./answer.controller'),
     topicController : require('./topic.controller'),
-    commentController :require('./comment.controller')
+    commentController :require('./comment.controller'),
+    likeController : require('./like.controller')
 }

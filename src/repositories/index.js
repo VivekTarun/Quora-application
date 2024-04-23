@@ -3,5 +3,6 @@ module.exports = {
     QuestionRepository : require('./question.repository'),
     TopicRepository : require('./topic.repository'),
     AnswerRepository : require('./answer.repository'),
-    CommentRepository : require('./comment.repository')
+    CommentRepository : require('./comment.repository'),
+    LikeRepository : require('./like.repository')
 }

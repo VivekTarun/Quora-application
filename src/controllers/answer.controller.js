@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const NotImplemented = require("../errors/notImplemented.error");
 const { AnswerRepository } = require("../repositories");
-const AnswerService = require("../services/answer.service");
+const {AnswerService} = require("../services/index");
 
 const answerService = new AnswerService(new AnswerRepository());
 function pingAnswerController(req, res) {
