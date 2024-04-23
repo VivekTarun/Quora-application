@@ -9,7 +9,7 @@ function pingCommentController(req, res) {
     return res.json({ message : "comment controller is up"});
 }
 
-async function commentOnAnswer(req, res) {
+async function commentOnAnswer(req, res, next) {
     try {
         const comment = await commentService.commentOnAnswer(req.params.id ,req.body);
         return res.status(StatusCodes.CREATED).json({
@@ -23,7 +23,7 @@ async function commentOnAnswer(req, res) {
     }
 }
 
-async function commentOnComment(req, res) {
+async function commentOnComment(req, res, next) {
     try {
         const comment = await await commentService.commentOnComment(req.params.id, req.body);
         return res.status(StatusCodes.CREATED).json({
